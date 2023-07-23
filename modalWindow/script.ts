@@ -1,3 +1,5 @@
+import { escape } from 'querystring';
+
 const modal = document.querySelector('.modal') as HTMLDivElement;
 const overlay = document.querySelector('.overlay') as HTMLDivElement;
 const closeModalButton = document.querySelector(
@@ -29,3 +31,9 @@ for (let i = 0; i < openModalButtons.length; i++) {
 
 closeModalButton.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
